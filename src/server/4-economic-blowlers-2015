@@ -1,0 +1,66 @@
+
+const matchData = require("/home/srikanth/js-IPL-project/src/public/output/matchesPerYear.json");
+const deliveryData = require("/home/srikanth/js-IPL-project/src/public/output/deliveries.json");
+
+const hii = require("./output.js");
+
+//Top 10 economical bowlers in the year 2015
+
+  
+ function getEconomyBowlersIn2015(matches,deliveries){
+
+
+  const matches2015 = matches.filter(match => match.season === '2015');
+  
+  const matchIds2015 = matches2015.map(match => match.id);
+  
+  const deliveries2015 = deliveries.filter(delivery => matchIds2015.includes(delivery.match_id));
+
+
+  const bowlerDetails = deliveries2015.reduce((acc,delivery) => {
+
+    let bowlerName = delivery.bowler;
+
+
+    if(!acc[bowlerName]){
+        acc[bowlerName] = {runs: 0, balls: 0};
+    }
+
+    if(delivery.wide_runs === '0' && delivery.noball_runs === '0'){
+
+        acc[bowlerName].balls = acc[bowlerName].balls + 1;
+    }
+    if( delivery.legbye_runs === '0' && delivery.bye_runs === '0'){
+
+        acc[bowlerName].runs += parseInt(delivery.total_runs);
+
+    }
+  
+    
+    return acc;
+
+  }, {});
+  
+  //console.log(bowlerDetails);
+  
+  const economyRates = Object.entries(bowlerDetails).map(([bowler, details]) => {
+    const overs = details.balls / 6;
+    const economy = (details.runs / overs).toFixed(2);
+
+    return { bowler, economy };
+  });
+  
+  const topEconomicalBowlers = economyRates
+    .sort((a, b) => a.economy - b.economy)
+    .slice(0, 10);
+  
+  return topEconomicalBowlers;
+
+ }
+ 
+
+  const result = getEconomyBowlersIn2015(matchData,deliveryData);
+
+  console.log(result);
+  
+  hii("../public/output/4-top10EconomicBowlersIn2015.json",result);
