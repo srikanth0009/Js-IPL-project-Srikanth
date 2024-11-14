@@ -3,7 +3,7 @@
 
 const matchData = require("/home/srikanth/js-IPL-project/src/public/output/matchesPerYear.json");
 
-const hii = require("./output.js");
+const storeOutput = require("./output.js");
 //Number of matches won per team per year in IPL.
 
 
@@ -14,6 +14,7 @@ function getWinsPerTeamPerYear(matches) {
 
     let year = match.season;
     let win = match.winner;
+    
     if(win.length === 0){
       return acc;
     }
@@ -45,6 +46,6 @@ console.log("Number of matches won per team per season in IPL:");
 
 console.log(winsPerTeamPerYear);
 
-hii("../public/output/2-matchesOwnPerTeamPerYear.json",winsPerTeamPerYear);
+storeOutput("../public/output/2-matchesOwnPerTeamPerYear.json",winsPerTeamPerYear);
 
 

@@ -1,7 +1,7 @@
 const deliveries = require("/home/srikanth/js-IPL-project/src/public/output/deliveries.json" );
 
 
-const hii = require("./output.js");
+const storeOutput = require("./output.js");
 
 //Find the bowler with the best economy in super overs
 
@@ -46,7 +46,6 @@ function getEconomy(output){
     
     for(let x in output){
 
-        
         let eco = output[x].runs/(Math.ceil(output[x].bolls/6));
         
         if(eco<obj.economy){
@@ -63,5 +62,5 @@ const result = getBestEconomyBowlerInSuperOvers(deliveries);
 console.log("Bowler with best economy in super overs:")
 console.log(result);
 
-hii("../public/output/9-bowlerWithBestEconomyInSuperOvers.json",result);
+storeOutput("../public/output/9-bowlerWithBestEconomyInSuperOvers.json",result);
 

@@ -2,7 +2,7 @@
 const matchData = require("/home/srikanth/js-IPL-project/src/public/output/matchesPerYear.json");
 const deliveryData = require("/home/srikanth/js-IPL-project/src/public/output/deliveries.json");
 
-const hii = require("./output.js");
+const storeOutput = require("./output.js");
 
 //Extra runs conceded per team in the year 2016
 
@@ -24,10 +24,10 @@ function getExtraRunsPerTeam2016(matches,deliveries){
         if(matchesIn2016.find(match => {
             return match.id === delivery.match_id;
         })){
-            if(!runsPerTeam[team]){
-                runsPerTeam[team] = runs;
-            }else{
+            if(runsPerTeam[team]){
                 runsPerTeam[team] += runs;
+            }else{
+                runsPerTeam[team] = runs;
             }
         }
     
@@ -42,5 +42,5 @@ const result = getExtraRunsPerTeam2016(matchData,deliveryData);
 console.log("The extra runs per team in 2016 :")
 console.log(result);
 
-hii("../public/output/3-extraRunsConcededPerTeamIn2016.json",result);
+storeOutput("../public/output/3-extraRunsConcededPerTeamIn2016.json",result);
 

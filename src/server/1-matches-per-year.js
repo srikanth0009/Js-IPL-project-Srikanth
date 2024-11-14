@@ -1,7 +1,7 @@
 
 const matchData = require("/home/srikanth/js-IPL-project/src/public/output/matchesPerYear.json" );
 
-const hii = require("./output.js");
+const storeOutput = require("./output.js");
 
 //Number of matches played per year for all the years in IPL.
 
@@ -36,7 +36,7 @@ function getMatchesPerYear(matches){
 
   }
   
-  hii("../public/output/1-matchesPerYear.json",matchesPerYear);
+  storeOutput("../public/output/1-matchesPerYear.json",matchesPerYear);
 
 
 

@@ -2,13 +2,13 @@
 const matchData = require("/home/srikanth/js-IPL-project/src/public/output/matchesPerYear.json");
 const deliveryData = require("/home/srikanth/js-IPL-project/src/public/output/deliveries.json");
 
-const hii = require("./output.js");
+const storeOutput = require("./output.js");
 
 //Find the highest number of times one player has been dismissed by another player
 
   
   function findHighestDismissals(deliveryData) {
-    // Count the dismissals between batsmen and bowlers
+
     const dismissalCounts = deliveryData.reduce((counts, delivery) => {
       if (delivery.dismissal_kind) {
         const key = `${delivery.batsman}-${delivery.bowler}`;
@@ -35,6 +35,6 @@ const hii = require("./output.js");
   const highestDismissal = findHighestDismissals(deliveryData);
   console.log(highestDismissal);
 
-  hii("../public/output/8-highestOnePlayerDismissedByAnotherPlayer.json",highestDismissal);
+  storeOutput("../public/output/8-highestOnePlayerDismissedByAnotherPlayer.json",highestDismissal);
 
   

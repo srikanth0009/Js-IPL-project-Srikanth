@@ -2,7 +2,7 @@
 const matchData = require("/home/srikanth/js-IPL-project/src/public/output/matchesPerYear.json");
 const deliveryData = require("/home/srikanth/js-IPL-project/src/public/output/deliveries.json");
 
-const hii = require("./output.js");
+const storeOutput = require("./output.js");
 
 //Top 10 economical bowlers in the year 2015
 
@@ -36,7 +36,6 @@ const hii = require("./output.js");
 
     }
   
-    
     return acc;
 
   }, {});
@@ -63,4 +62,4 @@ const hii = require("./output.js");
 
   console.log(result);
   
-  hii("../public/output/4-top10EconomicBowlersIn2015.json",result);
+  storeOutput("../public/output/4-top10EconomicBowlersIn2015.json",result);

@@ -1,7 +1,7 @@
 const deliveries = require("/home/srikanth/js-IPL-project/src/public/output/deliveries.json" );
 const matches = require("/home/srikanth/js-IPL-project/src/public/output/matchesPerYear.json" );
 
-const hii = require("./output.js");
+const storeOutput = require("./output.js");
 
 //Find the strike rate of a batsman for each season
 
@@ -29,9 +29,12 @@ function getStrikeRateOfBatsmanEachSeason(matches,deliveries){
     acc[batsman][season].balls += 1;
   
     return acc;
+
   }, {});
+
   console.log(batsmanStats);
-  
+
+
   const batsmanStrikeRates = Object.entries(batsmanStats).reduce((acc, [batsman, seasons]) => {
     acc[batsman] = {};
   
@@ -51,4 +54,5 @@ function getStrikeRateOfBatsmanEachSeason(matches,deliveries){
 const result = getStrikeRateOfBatsmanEachSeason(matches,deliveries);
 
 console.log(result);
-hii("../public/output/7-strikeRateOfEachBatsmanEachSeason.json",result);
+
+storeOutput("../public/output/7-strikeRateOfEachBatsmanEachSeason.json",result);

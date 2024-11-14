@@ -1,7 +1,7 @@
 
 const matchData = require("/home/srikanth/js-IPL-project/src/public/output/matchesPerYear.json");
 
-const hii = require("./output.js");
+const storeOutput = require("./output.js");
 
 //Find the number of times each team won the toss and also won the match
 
@@ -16,10 +16,10 @@ function getEachTeamWonTossAndMatch(matches){
 
         if(tosWinner === matchWinner){
 
-            if(!teams[matchWinner]){
-                teams[tosWinner] = 1;
-            }else{
+            if(teams[matchWinner]){
                 teams[matchWinner]++;
+            }else{
+                teams[tosWinner] = 1;
             }
         }
     });
@@ -34,5 +34,5 @@ const result = getEachTeamWonTossAndMatch(matchData);
 console.log("Number of times each team won the toss and match : ")
 console.log(result)
 
-hii("../public/output/5-numberOfTimesEachTeamWonTossAndMatch.json",result);
+storeOutput("../public/output/5-numberOfTimesEachTeamWonTossAndMatch.json",result);
 
