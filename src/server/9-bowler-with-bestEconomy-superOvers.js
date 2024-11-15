@@ -1,4 +1,4 @@
-const deliveries = require("/home/srikanth/js-IPL-project/src/public/output/deliveries.json" );
+const deliveries = require("../public/output/deliveries.json" );
 
 
 const storeOutput = require("./output.js");

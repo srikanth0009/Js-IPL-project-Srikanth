@@ -1,7 +1,7 @@
 
 
 
-const matchData = require("/home/srikanth/js-IPL-project/src/public/output/matchesPerYear.json");
+const matchData = require("../public/output/matchesPerYear.json");
 
 const storeOutput = require("./output.js");
 //Number of matches won per team per year in IPL.

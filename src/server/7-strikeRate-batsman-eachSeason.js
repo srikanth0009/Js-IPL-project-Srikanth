@@ -1,5 +1,5 @@
-const deliveries = require("/home/srikanth/js-IPL-project/src/public/output/deliveries.json" );
-const matches = require("/home/srikanth/js-IPL-project/src/public/output/matchesPerYear.json" );
+const deliveries = require("../public/output/deliveries.json" );
+const matches = require("../public/output/matchesPerYear.json" );
 
 const storeOutput = require("./output.js");
 
